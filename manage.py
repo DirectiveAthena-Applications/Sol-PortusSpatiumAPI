@@ -19,6 +19,7 @@ def main():
     # Gather all env variables from the secrets folder
     DotEnv("secrets/portus_spatium_api.env", auto_run=True)
 
+    # Django do stuff
     execute_from_command_line(sys.argv)
 
 
