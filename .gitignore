@@ -1,6 +1,7 @@
 # PyCharm stuff
 .idea/
 secrets/
+.run/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
