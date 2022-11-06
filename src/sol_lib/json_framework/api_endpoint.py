@@ -3,14 +3,16 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpRequest
 from django.db import transaction
 from django.core import exceptions as DjangoExceptions
+from django.views import View
+from django.core.handlers.wsgi import WSGIRequest
 
 # Athena Packages
 
 # Local Imports
-from json_framework.json_responses import BAD_REQUEST, SERVER_ERROR
+from json_framework.json_responses import BAD_REQUEST, SERVER_ERROR, NOT_ACCEPTABLE_JSON
 from json_framework.api_response import ApiResponse
 from json_framework.json_encoder import CustomJsonEncoder
 
@@ -20,10 +22,13 @@ from json_framework.json_encoder import CustomJsonEncoder
 def api_endpoint(_fnc=None, *, validation_error:JsonResponse=BAD_REQUEST, object_does_not_exist:JsonResponse=BAD_REQUEST):
     # ------------------------------------------------------------------------------------------------------------------
     def decorator(fnc):
-        def wrapper(*args, **kwargs) -> JsonResponse:
+        def wrapper(obj:View, request:HttpRequest) -> JsonResponse:
             try:
                 with transaction.atomic():
-                    match result := fnc(*args, **kwargs):
+                    if not (content_type := request.headers.get("Content-Type", False)) or content_type != "application/json":
+                        return NOT_ACCEPTABLE_JSON
+
+                    match result := fnc(obj, request):
                         case ApiResponse(status=status):
                             # This is the only point where a result queryset can be encoded into a json,
                             #   therefor this is the only place to use the CustomJsonEncoder

@@ -15,5 +15,4 @@ from api_streaming.views.index import ViewIndex
 # ----------------------------------------------------------------------------------------------------------------------
 urlpatterns = [
     path("", ViewIndex.as_view()),
-
 ]
