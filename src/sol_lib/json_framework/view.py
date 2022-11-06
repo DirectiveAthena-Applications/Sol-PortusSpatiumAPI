@@ -10,34 +10,31 @@ from django.http import JsonResponse
 # Athena Packages
 
 # Local Imports
-
-# ----------------------------------------------------------------------------------------------------------------------
-# - Support Code -
-# ----------------------------------------------------------------------------------------------------------------------
-ENDPOINT_NOT_FOUND: JsonResponse = JsonResponse(
-    {
-        "result":None,
-        "errors":["endpoint not found"]
-    },
-    status=404
-)
+from json_framework.json_responses import ENDPOINT_NOT_FOUND
+from json_framework.api_endpoint import api_endpoint
+from json_framework.api_response import ApiResponse
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class JsonView(View):
+class JsonAPIView(View):
 
-    def get(self, request:WSGIRequest) -> JsonResponse:
+    @api_endpoint
+    def get(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
         return ENDPOINT_NOT_FOUND
 
-    def post(self, request:WSGIRequest) -> JsonResponse:
+    @api_endpoint
+    def post(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
         return ENDPOINT_NOT_FOUND
 
-    def put(self, request:WSGIRequest) -> JsonResponse:
+    @api_endpoint
+    def put(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
         return ENDPOINT_NOT_FOUND
 
-    def patch(self, request:WSGIRequest) -> JsonResponse:
+    @api_endpoint
+    def patch(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
         return ENDPOINT_NOT_FOUND
 
-    def delete(self, request:WSGIRequest) -> JsonResponse:
+    @api_endpoint
+    def delete(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
         return ENDPOINT_NOT_FOUND

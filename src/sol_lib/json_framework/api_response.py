@@ -3,22 +3,29 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from django.core.handlers.wsgi import WSGIRequest
-from django.http import JsonResponse
+from dataclasses import dataclass, field
+from typing import Any
 
 # Athena Packages
 
 # Local Imports
-from json_framework.view import JsonAPIView
-from json_framework.api_endpoint import api_endpoint
-from json_framework.api_response import ApiResponse
-
-from api_streaming.models.log import StreamLog
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class ViewIndex(JsonAPIView):
-    @api_endpoint
-    def get(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
-        return ApiResponse(StreamLog.objects.all())
+@dataclass(slots=True)
+class ApiResponse:
+    result:Any = None
+    errors:list = field(default_factory=list)
+    status:int = 500
+
+    def to_dict(self) -> dict:
+        if self.errors:
+            return {
+                "result": self.result,
+                "errors": self.errors
+            }
+        else:
+            return {
+                "result": self.result,
+            }

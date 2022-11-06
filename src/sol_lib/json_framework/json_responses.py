@@ -3,22 +3,25 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 
 # Athena Packages
 
 # Local Imports
-from json_framework.view import JsonAPIView
-from json_framework.api_endpoint import api_endpoint
 from json_framework.api_response import ApiResponse
-
-from api_streaming.models.log import StreamLog
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class ViewIndex(JsonAPIView):
-    @api_endpoint
-    def get(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
-        return ApiResponse(StreamLog.objects.all())
+ENDPOINT_NOT_FOUND: JsonResponse = JsonResponse(
+    (response := ApiResponse(errors=["Endpoint Not Found"], status=404)).to_dict(),
+    status=response.status
+)
+BAD_REQUEST: JsonResponse = JsonResponse(
+    (response := ApiResponse(errors=["Bad Request"], status=400)).to_dict(),
+    status=response.status
+)
+SERVER_ERROR: JsonResponse = JsonResponse(
+    (response := ApiResponse(errors=["Internal Server Error"], status=500)).to_dict(),
+    status=response.status
+)
