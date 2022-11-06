@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'portus_spatium_api.urls'
+ROOT_URLCONF = 'portus_spatium.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'portus_spatium_api.wsgi.application'
+WSGI_APPLICATION = 'portus_spatium.wsgi.application'
 
 
 # Database
