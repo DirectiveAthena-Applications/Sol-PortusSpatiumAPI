@@ -1,0 +1,3 @@
+### GET request for all Stream Logs
+GET http://127.0.0.1:8000/api/streaming/
+Content-Type: application/json
