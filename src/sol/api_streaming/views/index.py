@@ -6,6 +6,7 @@ from __future__ import annotations
 from django.core.handlers.wsgi import WSGIRequest
 from django.http import JsonResponse
 from django.views import View
+import json
 
 # Athena Packages
 
@@ -22,26 +23,12 @@ class ViewIndex(View):
     """
     @api_endpoint
     def get(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
-        return ApiResponse(
-            [
-                {
-                    "url": "api/streaming",
-                    "doc": "Index of the streaming section of the Portus Spatium API",
-                    "methods": ["GET"],
-                    "pages": [
-                        {
-                            "url": "api/streaming/logs",
-                            "doc": "Entry point to gather, post or edit logs",
-                            "methods": ["GET", "POST", "DELETE", "PATCH"],
-                            "pages": []
-                        },
-                        {
-                            "url": "api/streaming/categories",
-                            "doc": "Entry point to gather, post or edit streaming categories",
-                            "methods": ["GET", "POST", "DELETE", "PATCH"],
-                            "pages": []
-                        }
-                    ]
-                }
-            ]
-        )
+        with open("docs/index.json", "r") as file:
+            data = json.load(file)
+
+        caught = []
+        for url_data in data:
+            if url_data["url"].startswith("api/streaming"):
+                caught.append(url_data)
+
+        return ApiResponse(caught)

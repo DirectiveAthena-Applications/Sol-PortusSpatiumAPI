@@ -14,8 +14,8 @@ from AthenaDocumentor import AthenaDocumentorParser, OutputChoice, Settings
 # ----------------------------------------------------------------------------------------------------------------------
 def main():
     Settings(
-        document_dunders=True,
-        document_private=True,
+        # document_dunders=True,
+        # document_private=True,
         # print_unvisited=True,
         print_visited=True,
     )

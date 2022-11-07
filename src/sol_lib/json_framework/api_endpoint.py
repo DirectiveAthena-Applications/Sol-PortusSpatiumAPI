@@ -7,7 +7,7 @@ from django.http import JsonResponse, HttpRequest
 from django.db import transaction
 from django.core import exceptions as DjangoExceptions
 from django.views import View
-from django.core.handlers.wsgi import WSGIRequest
+import functools
 
 # Athena Packages
 
@@ -22,6 +22,7 @@ from json_framework.json_encoder import CustomJsonEncoder
 def api_endpoint(_fnc=None, *, validation_error:JsonResponse=BAD_REQUEST, object_does_not_exist:JsonResponse=BAD_REQUEST):
     # ------------------------------------------------------------------------------------------------------------------
     def decorator(fnc):
+        @functools.wraps(fnc)
         def wrapper(obj:View, request:HttpRequest) -> JsonResponse:
             try:
                 with transaction.atomic():

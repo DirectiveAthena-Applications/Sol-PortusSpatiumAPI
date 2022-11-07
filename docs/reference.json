@@ -149,14 +149,6 @@
     "body": [
       {
         "type": "function",
-        "name": "_assemble_object_callback",
-        "docs": null,
-        "args": "encoder_result: dict[str:Callable]",
-        "returns": "Callable",
-        "body": []
-      },
-      {
-        "type": "function",
         "name": "match_model_fields",
         "docs": null,
         "args": "cls, model_type",

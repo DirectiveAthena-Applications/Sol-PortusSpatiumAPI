@@ -3,24 +3,21 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from django.urls import path
+from django.core.handlers.wsgi import WSGIRequest
+from django.http import JsonResponse
+from django.views import View
 
 # Athena Packages
 
 # Local Imports
-from api_streaming.views.index import ViewIndex
-from api_streaming.views.logs import ViewLogs
-from api_streaming.views.platforms import ViewPlatform
-from api_streaming.views.tags import ViewTags
-from api_streaming.views.categories import ViewCategories
+from json_framework.api_endpoint import api_endpoint
+from json_framework.api_response import ApiResponse
+from api_streaming.models.platform import StreamPlatform
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-urlpatterns = [
-    path("", ViewIndex.as_view()),
-    path("logs", ViewLogs.as_view()),
-    path("platforms", ViewPlatform.as_view()),
-    path("tags", ViewTags.as_view()),
-    path("categories", ViewCategories.as_view()),
-]
+class ViewPlatform(View):
+    @api_endpoint
+    def get(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
+        return ApiResponse(StreamPlatform.objects.all())

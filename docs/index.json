@@ -1,0 +1,42 @@
+[
+  {
+    "url": "api/streaming/",
+    "doc": "Index of the streaming section of the Portus Spatium API",
+    "methods": [
+      "get"
+    ],
+    "pages": []
+  },
+  {
+    "url": "api/streaming/logs",
+    "doc": "",
+    "methods": [
+      "get"
+    ],
+    "pages": []
+  },
+  {
+    "url": "api/streaming/platforms",
+    "doc": "",
+    "methods": [
+      "get"
+    ],
+    "pages": []
+  },
+  {
+    "url": "api/streaming/tags",
+    "doc": "",
+    "methods": [
+      "get"
+    ],
+    "pages": []
+  },
+  {
+    "url": "api/streaming/categories",
+    "doc": "",
+    "methods": [
+      "get"
+    ],
+    "pages": []
+  }
+]
