@@ -1,19 +1,29 @@
-### GET index help docs
-GET http://127.0.0.1:8000/api/streaming/
-Content-Type: application/json
-
 ### GET request for all Stream Logs
+### --------------------------------------------------------------------------------------------------------------------
 GET http://127.0.0.1:8000/api/streaming/logs
 Content-Type: application/json
 
-### GET request for all Stream Logs
+### GET request for all Stream Categories
+### --------------------------------------------------------------------------------------------------------------------
 GET http://127.0.0.1:8000/api/streaming/categories
 Content-Type: application/json
 
-### GET request for all Stream Logs
+### GET request for all Stream Platforms
+### --------------------------------------------------------------------------------------------------------------------
 GET http://127.0.0.1:8000/api/streaming/platforms
 Content-Type: application/json
 
-### GET request for all Stream Logs
+### GET request for all Stream Tags
+### --------------------------------------------------------------------------------------------------------------------
 GET http://127.0.0.1:8000/api/streaming/tags
 Content-Type: application/json
+
+### POST NEW Stream Categories
+### --------------------------------------------------------------------------------------------------------------------
+POST http://127.0.0.1:8000/api/streaming/categories
+Content-Type: application/json
+
+{
+  "name": "Kerbaal Space Program",
+  "twitch_id": 3
+}

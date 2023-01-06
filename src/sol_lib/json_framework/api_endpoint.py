@@ -23,13 +23,13 @@ def api_endpoint(_fnc=None, *, validation_error:JsonResponse=BAD_REQUEST, object
     # ------------------------------------------------------------------------------------------------------------------
     def decorator(fnc):
         @functools.wraps(fnc)
-        def wrapper(obj:View, request:HttpRequest) -> JsonResponse:
+        def wrapper(obj:View, request:HttpRequest, *args, **kwargs) -> JsonResponse:
             try:
                 with transaction.atomic():
                     if not (content_type := request.headers.get("Content-Type", False)) or content_type != "application/json":
                         return NOT_ACCEPTABLE_JSON
 
-                    match result := fnc(obj, request):
+                    match result := fnc(obj, request, *args, **kwargs):
                         case ApiResponse(status=status):
                             # This is the only point where a result queryset can be encoded into a json,
                             #   therefor this is the only place to use the CustomJsonEncoder

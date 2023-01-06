@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from django.core.handlers.wsgi import WSGIRequest
+from django.core.handlers.wsgi import HttpRequest
 from django.http import JsonResponse
 from django.views import View
 
@@ -19,5 +19,5 @@ from api_streaming.models.tag import StreamTag
 # ----------------------------------------------------------------------------------------------------------------------
 class ViewTags(View):
     @api_endpoint
-    def get(self, request:WSGIRequest) -> JsonResponse|ApiResponse:
+    def get(self, request:HttpRequest) -> JsonResponse|ApiResponse:
         return ApiResponse(StreamTag.objects.all())
