@@ -12,7 +12,7 @@ from django.apps import AppConfig
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class AppEvaClockworkAPI(AppConfig):
+class App_EvaClockworkAPI_Config(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'eva_clockwork_api'
     verbose_name = "EVA Clockwork API"
