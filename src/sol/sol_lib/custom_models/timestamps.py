@@ -16,10 +16,10 @@ from django.utils.translation import gettext_lazy
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
 re_timestamp:re.Pattern = re.compile(
-    r"^((\d{4,})|(-\d{4,})|\+0000)-[0,1]\d-[0-3]\d(T[0-2]\d:[0-5]\d:[0-5]\d)?$"
+    r"^((\d{4,})|(-\d{4,})|(\+0000))-((0[0-9])|(1[0-2]))-([0-2][0-9]|3[0-1])(T(([0-1][0-9])|(2[0-4])):([0-5][0-9]):([0-5][0-9]))?$"
 )
 re_duration:re.Pattern = re.compile(
-    r"^P(\d+Y)?(\d+M)?(\d+D)?(T([1-23]H)?([1-59]M)?([1-59]S))?$"
+    r"^P(\d+Y)?((1[0-2]|[1-9])M)?((3[01]|[12][0-9]|[1-9])D)?(T(((2[0-4]|1[0-9]|[1-9])H)?)((([1-5]?[0-9])M)?)((([1-5]?[0-9])S)?))?$"
 )
 
 def validate_timestamp(value:str) -> None:
@@ -45,8 +45,8 @@ def validate_duration(value:str) -> None:
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-# class ISO8601_Timestamp(models.CharField):
-#     default_validators = [validate_timestamp]
-#
-# class ISO8601_Duration(models.CharField):
-#     default_validators = [validate_duration]
+class ISO8601_Timestamp(models.CharField):
+    default_validators = [validate_timestamp]
+
+class ISO8601_Duration(models.CharField):
+    default_validators = [validate_duration]
