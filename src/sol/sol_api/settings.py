@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'portus_spatium.urls'
+ROOT_URLCONF = 'sol_api.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'portus_spatium.wsgi.application'
+WSGI_APPLICATION = 'sol_api.wsgi.application'
 
 
 # Database
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'portus_spatium.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "portus_spatium",
+        'NAME': "veritas_db",
         'HOST': os.environ["VERITAS_HOST"],
         'PORT': os.environ["VERITAS_PORT"],
         'USER':os.environ["VERITAS_USER"],

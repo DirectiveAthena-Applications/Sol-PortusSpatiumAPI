@@ -7,7 +7,7 @@ import sys
 from django.core.management import execute_from_command_line
 
 # Athena Packages
-from AthenaLib.parsers.dot_env import DotEnv
+from AthenaLib.parsers.dot_env import AthenaDotEnv
 
 # Local Imports
 
@@ -17,11 +17,10 @@ from AthenaLib.parsers.dot_env import DotEnv
 def main():
     """Run administrative tasks."""
     # Gather all env variables from the secrets folder
-    DotEnv("secrets/portus_spatium_api.env", auto_run=True, overwrite=True)
+    AthenaDotEnv("secrets/portus_spatium_api.env", auto_run=True, overwrite=True)
 
     # Django do stuff
     execute_from_command_line(sys.argv)
-
 
 if __name__ == '__main__':
     main()
