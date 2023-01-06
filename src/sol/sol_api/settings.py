@@ -5,7 +5,6 @@
 from __future__ import annotations
 import os
 from pathlib import Path
-from sshtunnel import SSHTunnelForwarder
 
 # Athena Packages
 
@@ -32,17 +31,20 @@ CSRF_COOKIE_SECURE = not DEBUG
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    # --- DJANGO apps ---
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api_streaming'
+
+    # --- Athena Apps ---
+    # - Eva Applications -
+    'eva_clockwork_api',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +84,7 @@ WSGI_APPLICATION = 'sol_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "veritas_db",
+        'NAME': "sol_api",
         'HOST': os.environ["VERITAS_HOST"],
         'PORT': os.environ["VERITAS_PORT"],
         'USER':os.environ["VERITAS_USER"],

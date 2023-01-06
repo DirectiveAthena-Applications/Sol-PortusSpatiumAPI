@@ -14,6 +14,6 @@ from django.urls import path, include
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 urlpatterns = [
-    path('api/streaming/', include('api_streaming.urls')),
+    path('eva/clockwork/api', include('eva_clockwork_api.urls')),
     path('admin/',admin.site.urls),
 ]
