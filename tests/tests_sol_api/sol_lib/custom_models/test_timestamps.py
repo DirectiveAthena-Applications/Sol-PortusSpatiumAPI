@@ -33,10 +33,10 @@ invalid_data:Iterable = (
     0,
     b"data",    # bytes instead of string
 )
+
 def get_data_dict() -> dict:
     with open(file="tests/data/sol_lib/regex_timestamps_and_durations.json") as file:
         return json.load(file)
-
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

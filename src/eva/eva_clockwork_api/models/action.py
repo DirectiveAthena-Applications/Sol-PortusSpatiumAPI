@@ -17,8 +17,8 @@ from sol_lib.custom_models.timestamps import ISO8601_Timestamp, ISO8601_Duration
 # ----------------------------------------------------------------------------------------------------------------------
 class Action(models.Model):
     timestamp = ISO8601_Timestamp(max_length=32,null=False, blank=False)
-    duration = ISO8601_Duration(max_length=32,null=False, blank=False)
+    duration = ISO8601_Duration(max_length=32,null=True)
     category = models.ManyToManyField(ActionCategory)
     subject = models.CharField(max_length=255, null=False, blank=False)
-    note = models.TextField(null=True, blank=True)
+    note = models.TextField(null=True)
     mood = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])

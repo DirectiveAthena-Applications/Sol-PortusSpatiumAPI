@@ -1,0 +1,46 @@
+{
+  "valid": [
+    {
+      "timestamp":"2023-01-08T15:21:00",
+      "duration":"PT5H",
+      "subject":"[BE] Relearning Django day 2 | After weeks of being ill, I'm back and hyper on coffee ☕",
+      "note":"This is a test",
+      "category": "streaming",
+      "mood":5
+    }
+  ],
+  "invalid": [
+    {
+      "timestamp":"",
+      "duration":null,
+      "subject":"NO SUBJECT",
+      "note":null,
+      "category": "streaming",
+      "mood":0
+    },
+    {
+      "timestamp":"2023-01-08T18:04:00",
+      "duration":"",
+      "subject":"NO SUBJECT",
+      "note":null,
+      "category": "streaming",
+      "mood":0
+    },
+    {
+      "timestamp":"2023-01-08T18:04:00",
+      "duration":null,
+      "subject":null,
+      "note":null,
+      "category": "streaming",
+      "mood":0
+    },
+    {
+      "timestamp":"2023-01-08T18:04:00",
+      "duration":null,
+      "subject":"NO SUBJECT",
+      "note":null,
+      "category": "streaming",
+      "mood":"0"
+    }
+  ]
+}
