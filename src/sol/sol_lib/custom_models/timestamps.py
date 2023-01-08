@@ -27,20 +27,20 @@ def validate_timestamp(value:str) -> None:
     Validates the inserted argument as a timestamp
     Raises a ValidationError if the value doesn't adhere to the ISO 8601 format
     """
-    if not isinstance(value, str):
-        raise ValidationError(gettext_lazy(f'{value} is not a string'))
-    if not re_timestamp.match(value):
-        raise ValidationError(gettext_lazy(f'{value} is not able to be defined as a timestamp in the ISO 8601 format'))
+    if isinstance(value, str) and re_timestamp.match(value):
+        return None
+
+    raise ValidationError(gettext_lazy(f'{value} is not able to be defined as a timestamp in the ISO 8601 format'))
 
 def validate_duration(value:str) -> None:
     """
     Validates the inserted argument as a duration
     Raises a ValidationError if the value doesn't adhere to the ISO 8601 format
     """
-    if not isinstance(value, str):
-        raise ValidationError(gettext_lazy(f'{value} is not a string'))
-    if not re_duration.match(value):
-        raise ValidationError(gettext_lazy(f'{value} is not able to be defined as a duration in the ISO 8601 format'))
+    if isinstance(value, str) and re_duration.match(value):
+        return None
+
+    raise ValidationError(gettext_lazy(f'{value} is not able to be defined as a duration in the ISO 8601 format'))
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
