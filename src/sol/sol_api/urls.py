@@ -14,6 +14,12 @@ from django.urls import path, include
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 urlpatterns = [
-    path('eva/clockwork/api', include('eva_clockwork_api.urls')),
+    # Django stuff
     path('admin/',admin.site.urls),
+
+    # Oath 2
+    path(r'o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+
+    # EVA Apps
+    path('eva/clockwork/api/', include('eva_clockwork_api.urls')),
 ]

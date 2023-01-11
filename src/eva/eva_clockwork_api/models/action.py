@@ -4,6 +4,7 @@
 # General Packages
 from __future__ import annotations
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Athena Packages
@@ -22,3 +23,4 @@ class Action(models.Model):
     subject = models.CharField(max_length=255, null=False, blank=False)
     note = models.TextField(null=True)
     mood = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
+    user = models.ForeignKey(User, on_delete=models.RESTRICT)

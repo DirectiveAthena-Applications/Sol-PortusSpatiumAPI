@@ -46,7 +46,9 @@ def validate_duration(value:str) -> None:
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class ISO8601_Timestamp(models.CharField):
+    empty_strings_allowed = False
     default_validators = [validate_timestamp]
 
 class ISO8601_Duration(models.CharField):
+    empty_strings_allowed = False
     default_validators = [validate_duration]

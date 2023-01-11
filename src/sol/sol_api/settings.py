@@ -42,7 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # --- oath2 ---
+    'oauth2_provider',
+
     # --- Athena Apps ---
+    # - Sol Applications -
+
     # - Eva Applications -
     'eva_clockwork_api',
 ]

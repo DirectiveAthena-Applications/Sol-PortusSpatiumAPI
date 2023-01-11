@@ -10,10 +10,12 @@ from django.views import View
 # Athena Packages
 
 # Local Imports
+from sol_lib.json_api_framework.endpoint.api_endpoint import api_endpoint
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class ViewIndex(View):
+    @api_endpoint
     def get(self, request:HttpRequest) -> JsonResponse:
         return JsonResponse({"result":True})

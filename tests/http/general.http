@@ -1,4 +1,16 @@
 ### Test Eva Clockwork API
-### --------------------------------------------------------------------------------------------------------------------
-GET http://127.0.0.1:8000/eva/clockwork/api
+GET http://127.0.0.1:8000/eva/clockwork/api/action
 Content-Type: application/json
+username: test
+password: test
+
+### --------------------------------------------------------------------------------------------------------------------
+GET http://127.0.0.1:8000/account
+Content-Type: application/json
+auth-token: ABCDE...
+
+### --------------------------------------------------------------------------------------------------------------------
+GET http://127.0.0.1:8000/account/auth
+Content-Type: application/json
+username: test
+password: test
